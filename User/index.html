@@ -5,10 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
+
+
+<div id="header-template"><!--Your header.html placeholder--></div>
+
+
+<div id="footer-template"><!--Your footer.html placeholder--></div>
+
+
+
     <section class="container">
         <section id="header">
             <div class="sm-heder">
@@ -116,9 +127,13 @@
                                 <div class="match-statistic">
                                     <p><strong>win the match</strong></p>
                                     <div class="match-statistic-result">
-                                        <a href="#">Fagiano Okayama 2.3</a>
-                                        <a href="#">Tokyo Verdy  2.3</a>
-                                        <a href="#">Drow 2.3</a>
+                                        <table>
+                                            <tr>
+                                                <td><a href="#">Fagiano Okayama 2.3</a></td>
+                                                <td><a href="#">Tokyo Verdy  2.3</a></td>
+                                                <td><a href="#">Drow 2.3</a></td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
                             </li>
@@ -198,5 +213,11 @@
    element.classList.toggle("display");
 }
     </script>
+<script>
+$(function(){
+$("#header-template").load("header.html");
+$("#footer-template").load("footer.html");
+});
+</script>
 </body>
 </html>
