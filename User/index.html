@@ -18,12 +18,37 @@
         <section id="header">
             <div class="sm-heder">
             <div class="header-logo">Betting</div>
-            <div class="header-time">Sun 11 Jul 12:30:38AM</div>
+            <div class="header-time"><p id="show">Time loading..</p>
+
+
+                <script>
+                    function showTime(){
+                    var currentdate = new Date(); 
+                    var hours = currentdate.getHours();
+                    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                    var month = currentdate.getMonth();
+
+                    var ampm = hours >= 12 ? ' pm' : ' am';
+                     hours = hours % 12;
+                    hours = hours ? hours : 12; // the hour '0' should be '12'
+                    var datetime =  currentdate.getDate() + " "
+                    + months[month]  + " "  
+                    + hours + ":"  
+                    + currentdate.getMinutes() + ":" 
+                    + currentdate.getSeconds() + ampm;
+
+                    document.getElementById('show').innerHTML = datetime;
+                    }
+                    setInterval('showTime()', 1000)
+
+                </script>
+            </div>
             </div>
             <div class="header-nav">
                 <ul>
-                    <li><a href="#">Register</a></li>
-                    <li><a href="#">Login</a></li>
+                    <!-- <li><a href="#">Register</a></li>
+                    <li><a href="#">Login</a></li> -->
+                    <li><a href="">Profile (100.00)</a></li>
                 </ul>
             </div>
         </section>
@@ -167,7 +192,7 @@
            
             <div class="footer-info">
                 <h1>Betting</h1>
-                <p>This is a betting site creating for demo</p>
+                <p>Best betting site © 2021 all right reserved.</p>
             </div>
 
             <div class="footer-menu">
