@@ -1,0 +1,129 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: Arial, Helvetica, sans-serif;
+text-decoration: none;
+list-style-type: none;
+}
+body{
+background: #f9f9f9;
+}
+.container{
+max-width: 1200px;
+margin: 0 auto;
+background: #fff;
+padding: 0 20px;
+}
+#header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 50px;
+border-bottom: 1px solid #dddd;
+}
+.header-logo{ font-size: 25px;}
+.header-nav{}
+.header-nav ul{}
+.header-nav ul li{ display: inline-block;}
+.header-nav ul li a{display: inline-block; padding: 5px 10px; background: #eee;color: #000;transition: .5s;}
+.header-nav ul li a:hover{
+    background-color: #ddd;
+    color: #333;
+}
+
+
+#footer{
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 200px;
+border-top: 1px solid #dddd;
+border-bottom: 1px solid #dddd;
+text-align: center;
+background: #fff;
+}
+.footer-info{
+max-width: 300px;
+}
+.footer-menu{}
+.footer-menu ul{}
+.footer-menu ul li{}
+.footer-menu ul li a{ padding: 5px 10px; background: #eee; color: #333; display: block; margin: 5px;}
+.footer-text{
+max-width: 300px;color: red;
+}
+#main-content{
+min-height: calc(100vh - 250px);
+}
+
+.live-match h3{
+padding: 10px;
+background: #eee;
+cursor: pointer;
+}
+.match-header{
+display: flex;
+justify-content: space-between;
+}
+.match-ul{
+border: 1px solid #ddd;
+margin: 5px;
+}
+.match-ul .match-li span{
+padding: 10px;
+background: #eee;
+display: block;
+}
+.match-ul .match-li ul li{
+padding: 10px;
+margin: 5px;
+background: #eee;
+}
+.match-statistic-result{
+background: #ddd;
+margin: 5px 0;
+}
+.match-statistic-result a{
+padding: 5px 10px;
+background: #fff; 
+display: inline-block;
+color: #000;
+margin: 5px;
+}
+.match-statistic-result p{
+padding:  10px;
+}
+.display{
+display: none;
+}
+.user-menu{padding: 5px 0;border-bottom: 1px solid #ddd;}
+.menu{display: flex;align-items: center;flex-wrap: wrap;  border-bottom: 1px solid #dddd;}
+.menu-box{display: flex;align-items: center; text-align: center;border: 1px solid #ddd; padding: 5px 10px;transition: .5s; margin: 5px;margin-left: 0;}
+.menu-box:hover{background-color: #eee;}
+.menu-box-img{float: left;}
+.menu-box-img img{height: 20px;}
+.menu-box-title{float: left;padding: 0 5px;}
+.menu-box-title a{color: #000;}
+
+
+
+
+
+
+@media screen and (max-width: 480px) {
+ 
+.sm-block ul li, .sm-block ul li a{
+display: block;
+margin-bottom: 2px;
+}
+#footer{
+display: block;
+}
+.footer-info, .footer-text{
+    max-width: initial;
+}
+.container{
+    padding: 5px;
+}
+}
