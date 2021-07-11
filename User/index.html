@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            list-style-type: none;
+        }
+        .container{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        #header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            border-bottom: 1px solid #dddd;
+        }
+        .header-logo{ font-size: 25px;}
+        .header-nav{}
+        .header-nav ul{}
+        .header-nav ul li{ display: inline-block;}
+        .header-nav ul li a{display: inline-block; padding: 5px 10px; background: #eee;}
+
+
+
+        #footer{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 200px;
+            border-top: 1px solid #dddd;
+            border-bottom: 1px solid #dddd;
+            text-align: center;
+        }
+        .footer-menu{}
+        .footer-menu ul{}
+        .footer-menu ul li{}
+        .footer-menu ul li a{ padding: 5px 10px; background: #eee; color: #333; display: block; margin: 5px;}
+        .footer-text{
+            max-width: 300px;
+        }
+        #main-content{
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <section id="header">
+            <div class="header-logo">Betting</div>
+            <div class="header-time">Sun 11 Jul 12:30:38AM</div>
+            <div class="header-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="main-content">
+            
+        </section>
+        <section id="footer">
+            <div class="footer-info">
+                <h1>Betting</h1>
+                <p>This is a betting site creating for demo</p>
+            </div>
+
+            <div class="footer-menu">
+                <p>Menu</p>
+                <hr>
+                <ul>
+                    <li><a href="#">Main page</a></li>
+                    <li><a href="#">contact page</a></li>
+                </ul>
+            </div>
+            <div class="footer-text">
+                <p> Caution! We strongly discourage to use this site who are not 18+ and also site administrator is not liable to any kind of issues created by user.</p>
+            </div>
+        </section>
+    </section>
+</body>
+</html>
