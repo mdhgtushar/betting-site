@@ -214,14 +214,15 @@
  <script>
 var x = 0;
 function prev() {
+x = x - 100;
 var boxes = document.getElementById('boxes');
-if(x < 1){
-boxes.style.transform = 'translate(30px)';
-}
 if(x < boxes.offsetWidth){
 boxes.style.transform = 'translate(-'+x+'px)';
 }
-x = x - 100;
+if(x < 1){
+boxes.style.transform = 'translate(30px)';
+x = 30;
+}
 console.log(x)
 }
 function next() {
