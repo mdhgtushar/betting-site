@@ -100,18 +100,32 @@ padding:  10px;
 display: none;
 }
 .user-menu{padding: 5px 0;border-bottom: 1px solid #ddd;}
-.menu{display: flex;align-items: center; border-bottom: 1px solid #dddd;overflow-x: scroll;}
-.menu-box{display: flex;align-items: center; text-align: center;border: 1px solid #ddd; padding: 5px 10px;transition: .5s; margin: 5px;margin-left: 0;}
+.menu{display: flex;align-items: center; border-bottom: 1px solid #dddd;
+    overflow: hidden;position: relative;}
+.menu-box{display: flex;align-items: center; text-align: center; border: 1px solid #ddd; padding: 5px 10px;transition: .5s; margin: 5px;margin-left: 0;}
 .menu-box:hover{background-color: #eee;}
 .menu-box-img{float: left;}
 .menu-box-img img{height: 20px;}
 .menu-box-title{float: left;padding: 0 5px;width: max-content;}
 .menu-box-title a{color: #000;}
+.scrollbarhide::-webkit-scrollbar {
+  display: none;
+}
 
-
-
-
-
+.menu-button {
+    position: absolute;
+    z-index: 100;
+}
+.menu-button button{
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+.menu-boxes{
+    display: flex;
+    transform: translate(30px);
+    transition: .3s;
+}
 
 @media screen and (max-width: 480px) {
  

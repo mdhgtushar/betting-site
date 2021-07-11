@@ -5,18 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
 
-
-<div id="header-template"><!--Your header.html placeholder--></div>
-
-
-<div id="footer-template"><!--Your footer.html placeholder--></div>
 
 
 
@@ -48,10 +42,14 @@
         <section id="main-content">
         <br>
             <div class="live-match">
+               
+        <section class="menu" id="menu">
+            <div class="menu-button">
+                <button id="prev" onclick="prev()"> < </button>
+            </div> 
+           
+            <div class="menu-boxes" id="boxes">
 
-
-                
-        <section class="menu">
             <div class="menu-box">
                 <div class="menu-box-img"><img src="https://alldemo.site/demo-20/img/Star.png" alt=""></div>
                 <div class="menu-box-title"><a href="">All Games</a></div>
@@ -112,9 +110,9 @@
                 <div class="menu-box-img"><img src="https://alldemo.site/demo-20/img/Star.png" alt=""></div>
                 <div class="menu-box-title"><a href="">All Games</a></div>
             </div>
-            <div class="menu-box">
-                <div class="menu-box-img"><img src="https://alldemo.site/demo-20/img/Star.png" alt=""></div>
-                <div class="menu-box-title"><a href="">All Games</a></div>
+            </div>
+            <div class="menu-button" style="right: 0;">
+                <button onclick="next()"> > </button>
             </div>
         </section>
         <br/>
@@ -213,11 +211,37 @@
    element.classList.toggle("display");
 }
     </script>
-<script>
-$(function(){
-$("#header-template").load("header.html");
-$("#footer-template").load("footer.html");
-});
-</script>
+ <script>
+var x = 0;
+function prev() {
+var boxes = document.getElementById('boxes');
+if(x < 1){
+boxes.style.transform = 'translate(30px)';
+}
+if(x < boxes.offsetWidth){
+boxes.style.transform = 'translate(-'+x+'px)';
+}
+x = x - 100;
+console.log(x)
+}
+function next() {
+x+=100;
+var menu = document.getElementById('menu').offsetWidth;
+var boxes = document.getElementById('boxes');
+if(x < boxes.offsetWidth - menu){
+boxes.style.transform = 'translate(-'+x+'px)';
+}else{
+boxes.style.transform = 'translate(-'+x+'px)';
+x=boxes.offsetWidth - menu;
+}
+console.log(x)
+
+
+
+}
+
+
+
+            </script>
 </body>
 </html>
