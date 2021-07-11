@@ -122,6 +122,7 @@ margin-bottom: 2px;
 #footer{
 display: block;
 padding: 30px 0;
+height: initial;
 }
 .footer-info, .footer-text{
     max-width: initial;
