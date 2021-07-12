@@ -45,7 +45,7 @@ session_start();
             <div class="header-nav">
                 <ul>
                     <?php if(isset( $_SESSION['logedInUserId'])){ ?>
-                    <li><a href="profile.php">Profile (100.00tk)</a></li>
+                    <li><a href="profile.php">Profile (00.00tk)</a></li>
                     <li><a href="logout.php">logout</a></li>
                     <?php }else{?>
                     <li><a href="register.php">Register</a></li>
@@ -63,7 +63,7 @@ session_start();
                     <li><a href="inbox.php">Inbox</a></li>
                     <li><a href="live_sports.php">Live Sports</a></li>
                     <li><a href="statement.php">My Statement</a></li>
-                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="sponsor.php">My Sponsor</a></li>
                 </ul>
             </div>
         </section> 

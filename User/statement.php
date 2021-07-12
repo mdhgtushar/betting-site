@@ -18,7 +18,8 @@
                 <div class="menu-box-title"><a href="">Transiction</a></div>
             </div>
         </section>
-
+        comming soon
+<!-- 
 <table id="customers">
   <tr>
     <th>Company</th>
@@ -77,7 +78,7 @@
   </tr>
 </table>
 
-
+ -->
 
         
         </section> <br>
