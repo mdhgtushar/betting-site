@@ -22,6 +22,7 @@
             margin: auto;
             background-color: #ffff;
             border-radius: 5px;
+            overflow: hidden;
         }
         h1{
             text-align: center;
@@ -68,7 +69,7 @@
 
         }
         p a{
-            color: #49c1a2;
+            color: #999;
         }
 
 
@@ -78,42 +79,33 @@
     <section class="main-section">
     <div class="signup-box">
         <h1>Sign Up</h1>
-        <form action="">
+        <form action="Actions/authAction.php" method="post">
             <label for="">Full Name</label>
-            <input type="text" placeholder="Name">
+            <input type="text" placeholder="Name" name="fullName">
             <label for="">Mobile Number</label>
-            <input type="number" placeholder="Mobile Number">
+            <input type="number" placeholder="Mobile Number" name="mobileNumber">
             <label for="">Select Club</label>
-                <select name="" id="Club">
+                <select name="clubId" id="Club">
                 <option value="Club">Select Club</option>
-                <option value="green club">GREEN CLUB</option>
-                <option value="green club">GREEN CLUB</option>
-                <option value="green club">GREEN CLUB</option>
-                <option value="green club">GREEN CLUB</option>
-                <option value="green club">GREEN CLUB</option>
-                <option value="green club">GREEN CLUB</option>
-                <option value="green club">GREEN CLUB</option>
-                <option value="green club">GREEN CLUB</option>
-                <option value="green club">GREEN CLUB</option>
-                <option value="green club">GREEN CLUB</option>
                 <option value="green club">GREEN CLUB</option>
                 <option value="green club">GREEN CLUB</option>
             </select>
             
             <label for="">Password</label>
-            <input type="password" placeholder="password">
+            <input type="password" placeholder="password" name="password">
             <label for="">User Id</label>
-            <input type="text" placeholder="User Id">
+            <input type="text" placeholder="User Name" name="userName">
             <label for="">Email</label>
-            <input type="email" placeholder="Email Id">
+            <input type="email" placeholder="Email Id" name="email">
             <label for="">Sponsor's Username</label>
-            <input type="text" placeholder="Optional">
+            <input type="text" placeholder="Optional" name="sponsorId">
             <label for="">Confirm Password</label>
-            <input type="password" placeholder="Confirm Password">
-            <input type="button" value="Register Now">
+            <input type="password" placeholder="Confirm Password" name="cpassword">
+            <label for="">Register </label>
+            <input type="submit" name="register_submit" value="Register Now">
         </form>
     </div>
-    <p>Not have an account?<a href="#">Sign Up</a></p>
+    <p>Already have an account?<a href="login.php">Login</a></p>
     
 </section>
 </body>

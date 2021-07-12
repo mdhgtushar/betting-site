@@ -19,10 +19,10 @@
         }
         .login-box{
             max-width: 360px;
-            height: 280px;
             margin: auto;
             background-color: #ffff;
             border-radius: 5px;
+            overflow: hidden;
         }
         h1{
             text-align: center;
@@ -63,25 +63,29 @@
 
         }
         p a{
-            color: #49c1a2;
+            color: #999;
         }
-
-
+        .col-dng{
+            color:red;
+        }
     </style>
 </head>
 <body>
     <section class="main-section">
     <div class="login-box">
         <h1>Log In</h1>
-        <form action="">
+        <p class="col-dng">
+            Username or Password is incorrect
+        </p>
+        <form action="Actions/authAction.php" method="post">
             <label for="">User Id</label>
-            <input type="text" placeholder="User Id">
+            <input type="text" name="userName" placeholder="User Name">
             <label for="">Password</label>
-            <input type="password" placeholder="password">
-            <input type="submit" value="Login">
+            <input type="password" name="password" placeholder="password">
+            <input type="submit" name="login_submit" value="Login">
         </form>
     </div>
-    <p>Not have an account?<a href="#">Sign Up</a></p>
+    <p>Not have an account?<a href="register.php">Sign Up</a></p>
 </section>
 </body>
 </html>
