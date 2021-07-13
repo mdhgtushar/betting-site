@@ -43,6 +43,8 @@ while($roww = mysqli_fetch_array($resulyt)){
 </tr>
 <?php 
 $userId = $_SESSION['logedInUserId'];
+
+
 $query = "SELECT * FROM users WHERE id='$userId'";
 $result = mysqli_query($con, $query);
 

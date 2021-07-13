@@ -76,6 +76,9 @@ color: #999;
 .col-dng{
     color: red;
 }
+.col-success{
+    color: green;
+}
 </style>
 </head>
 <body>
@@ -117,7 +120,8 @@ while($rowy = mysqli_fetch_array($resulty)){
 <input type="password" placeholder="password" id="password" required>
 <label for="">Confirm Password</label>
 <input type="password" placeholder="Confirm Password" id="cpassword" required>
-<label for="">Register </label>
+<br>
+<br>
 <input type="submit" id="register_submit" value="Register Now">
 </form>
 </div>
@@ -126,6 +130,10 @@ while($rowy = mysqli_fetch_array($resulty)){
 </section>
 
 <script>
+    function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
      $('#submitSign').submit(function(e){
             e.preventDefault()
             var fullName = $('#fullName').val();
@@ -142,7 +150,7 @@ while($rowy = mysqli_fetch_array($resulty)){
             password:password, userName:userName, email:email,  sponsorId:sponsorId ,cpassword:cpassword,  register_submit:register_submit}, function(data){
                 $('#Load').html(data);
             })
-            
+             topFunction() ;
         })
 </script>
 </body>

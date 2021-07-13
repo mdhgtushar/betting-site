@@ -11,7 +11,7 @@ while($row = mysqli_fetch_array($result)){
 ?>
 <tr>
 <th>Balance</th>
-<td>00.00 tk</td>
+<td><?php echo $balance; ?>tk</td>
 </tr>
 
 <tr>

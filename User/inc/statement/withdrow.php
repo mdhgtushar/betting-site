@@ -28,7 +28,18 @@ while($roww = mysqli_fetch_array($resulyt)){
 <td><?php echo $roww['valueTo']?></td>
 <td><?php echo $roww['ammount']?></td>
 <td><?php echo $roww['method']?></td>
-<td><?php echo $roww['statusId']?></td>
+<td><?php
+ $statusPo = $roww['statusPo'];
+ if($statusPo == 0){
+         echo "<span style='color:gray'>panding<span>";
+ }elseif($statusPo == 1){
+        echo "<span style='color:green'>Accepted<span>";
+ }elseif($statusPo == 2){
+        echo "<span style='color:red'>Canceled<span>";
+ }
+ 
+ 
+ ?></td>
 <td><?php echo $roww['note']?></td>
 <td><?php echo $roww['subTime']?></td>
 <td><?php echo $roww['subTime']?></td>

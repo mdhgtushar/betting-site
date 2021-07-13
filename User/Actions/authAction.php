@@ -43,6 +43,7 @@ WHERE id='$userID' ";
 $result = mysqli_query($con, $query);
 if($result){
 echo "<p class='col-suc'>Password Update successful</p>";
+echo '<script>window.location.href = "logout.php";</script>';
 }else{
 echo "<p class='col-dng'>Something Wrong</p>";
 }
@@ -119,7 +120,7 @@ if($value == 1){
 $query = "INSERT INTO users ( fullName , mobileNumber , clubId , password , userId , email , sopnsorsUserId ) 
 VALUES ('$fullName' , '$mobileNumber' , '$clubId' , '$password' , '$userName' , '$email', '$sponsorId')";
 $result = mysqli_query($con,$query);
-if($result){ echo "Register success! Please Login"; }else{ echo "something wrong"; }
+if($result){ echo "<p class='col-success'>Register success! Please Login</p>"; }else{ echo "something wrong"; }
 }
 
 

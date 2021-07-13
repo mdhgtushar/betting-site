@@ -25,6 +25,11 @@
    var element = document.getElementById("allMatches");
    element.classList.toggle("display");
 }
+
+     function sidebar() {
+   var element = document.getElementById("sidebar");
+   element.classList.toggle("transform");
+}
       function allMatchesShow2() {
    var element = document.getElementById("allMatches2");
    element.classList.toggle("display");
