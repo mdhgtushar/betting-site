@@ -1,10 +1,36 @@
 <?php include"inc/header.php"?>
 
 
+
+
+
+
+<style>
+.marquee{
+color: #000;
+background: #eee;
+border-left: 2px solid #000;
+border-right: 2px solid #000;
+font-size: 15px;
+border-bottom: 1px solid #0000;
+padding:5px;
+}
+</style>
+
+
+
         <section id="main-content">
         <br>
             <div class="live-match">
                
+<section class="main-section">
+<div class="marquee">
+<marquee>
+<p><strong>Wellcome to our site</strong></p>
+</marquee>
+</div>
+</section>
+
         <section class="menu" id="menu">
             <div class="menu-button">
                 <button id="prev" onclick="prev()"> < </button>

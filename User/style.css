@@ -112,8 +112,19 @@ display: none;
 .scrollbarhide::-webkit-scrollbar {
   display: none;
 }
+.col-suc{
+    color: green;
+    padding: 20px;
+    background: #eee;
+    overflow: hidden;
+    margin: 10px 0;
+}
 .col-dng{
     color: red;
+    padding: 20px;
+    background: #eee;
+    overflow: hidden;
+    margin: 10px 0;
 }
 .menu-button {
     position: absolute;

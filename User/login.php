@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>log in</title>
     <style>
         *{
@@ -74,18 +75,31 @@
     <section class="main-section">
     <div class="login-box">
         <h1>Log In</h1>
-        <p class="col-dng">
-            Username or Password is incorrect
-        </p>
-        <form action="Actions/authAction.php" method="post">
+        <p class="col-dng" id="Load"> </p>
+        <form action="" method="post" id="login_submit">
             <label for="">User Id</label>
-            <input type="text" name="userName" placeholder="User Name">
+            <input type="text" id="userName" placeholder="User Name">
             <label for="">Password</label>
-            <input type="password" name="password" placeholder="password">
-            <input type="submit" name="login_submit" value="Login">
+            <input type="password" id="password" placeholder="password">
+            <input type="submit" value="Login">
         </form>
     </div>
     <p>Not have an account?<a href="register.php">Sign Up</a></p>
 </section>
+
+<script>
+     $('#login_submit').submit(function(e){
+            e.preventDefault()
+            var userName = $('#userName').val();
+            var password = $('#password').val();
+            var login_submit = $('#login_submit').val();
+            if(userName != "" && password != ""){
+                
+            $.post('Actions/authAction.php' , {userName:userName, password:password, login_submit:login_submit}, function(data){
+                $('#Load').html(data);
+            })
+            }
+        })
+</script>
 </body>
 </html>

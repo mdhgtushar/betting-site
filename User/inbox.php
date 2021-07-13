@@ -4,79 +4,40 @@
 <section id="main-content">
 <br>
 
-<section class="menu">
+        <section class="menu" id="menu">
+            <div class="menu-button">
+                <button id="prev" onclick="prev()"> < </button>
+            </div> 
+           
+            <div class="menu-boxes" id="boxes">
+
 <div class="menu-box">
-<div class="menu-box-title"><a href="">Bets</a></div>
+<div class="menu-box-title"><a href="inbox.php?allMessages">All Messages</a></div>
 </div>
 <div class="menu-box">
-<div class="menu-box-title"><a href="">Deposits</a></div>
+<div class="menu-box-title"><a href="inbox.php?myMessages">My Message</a></div>
 </div>
 <div class="menu-box">
-<div class="menu-box-title"><a href="">Withdrowals</a></div>
+<div class="menu-box-title"><a href="inbox.php?newMessage">Send Message</a></div>
 </div>
-<div class="menu-box">
-<div class="menu-box-title"><a href="">Transiction</a></div>
 </div>
+            <div class="menu-button" style="right: 0;">
+                <button onclick="next()"> > </button>
+            </div>
 </section>
 
-<table id="customers">
-<tr>
-<th>Company</th>
-<th>Contact</th>
-<th>Country</th>
-</tr>
-<tr>
-<td>Alfreds Futterkiste</td>
-<td>Maria Anders</td>
-<td>Germany</td>
-</tr>
-<tr>
-<td>Berglunds snabbköp</td>
-<td>Christina Berglund</td>
-<td>Sweden</td>
-</tr>
-<tr>
-<td>Centro comercial Moctezuma</td>
-<td>Francisco Chang</td>
-<td>Mexico</td>
-</tr>
-<tr>
-<td>Ernst Handel</td>
-<td>Roland Mendel</td>
-<td>Austria</td>
-</tr>
-<tr>
-<td>Island Trading</td>
-<td>Helen Bennett</td>
-<td>UK</td>
-</tr>
-<tr>
-<td>Königlich Essen</td>
-<td>Philip Cramer</td>
-<td>Germany</td>
-</tr>
-<tr>
-<td>Laughing Bacchus Winecellars</td>
-<td>Yoshi Tannamuri</td>
-<td>Canada</td>
-</tr>
-<tr>
-<td>Magazzini Alimentari Riuniti</td>
-<td>Giovanni Rovelli</td>
-<td>Italy</td>
-</tr>
-<tr>
-<td>North/South</td>
-<td>Simon Crowther</td>
-<td>UK</td>
-</tr>
-<tr>
-<td>Paris spécialités</td>
-<td>Marie Bertrand</td>
-<td>France</td>
-</tr>
-</table>
+<?php 
 
+if(isset($_GET['allMessages'])){
+  include"inc/inbox/allMessages.php";
+}elseif(isset($_GET['myMessages'])){
+   include"inc/inbox/myMessages.php";
+}elseif(isset($_GET['newMessage'])){
+   include"inc/inbox/newMessage.php";
+}else{
+  include"inc/inbox/allMessages.php";
+}
+?>
 
 
 
