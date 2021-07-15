@@ -12,7 +12,7 @@
 <?php 
 $userId = $_SESSION['logedInUserId'];
 
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=3";
+$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=3 ORDER BY id desc";
 $resulyt = mysqli_query($con, $queryy);
 
 if($resulyt){
@@ -55,7 +55,7 @@ while($row = mysqli_fetch_array($result)){
 $userId =  $row['userId'];
 
 
-$queryy = "SELECT * FROM transiction WHERE trnsfUserName='$userId' AND statusId=3";
+$queryy = "SELECT * FROM transiction WHERE trnsfUserName='$userId' AND statusId=3 ORDER BY id desc";
 $resulyt = mysqli_query($con, $queryy);
 
 if($resulyt){

@@ -4,26 +4,26 @@
 
 
 <style>input,textarea,select{width:100%;padding: 10px;outline:0;border:2px solid #ddd;}</style>
-<form id="addgame">
+<form id="addPayOpt">
   
     <p id="Load"> </p>
 <table id="customers">
 
 <tr>
 <th>Method Name</th>
-<td><input type="text" id="countryTwo" placeholder="Method name" required></td>
+<td><input type="text" id="methodName" placeholder="Method name" required></td>
 </tr>
 <tr>
 <th>Method Type</th>
-<td><input type="text" id="tornamName" placeholder="Method typr (e.g personal)" required></td>
+<td><input type="text" id="methodType" placeholder="Method type (e.g personal)" required></td>
 </tr>
 <tr>
 <th>Payment Number</th>
-<td><input type="number" id="gameDay" placeholder="Payment Number" required></td>
+<td><input type="number" id="number" placeholder="Payment Number" required></td>
 </tr>
 <tr>
 <th>Add payment</th>
-<td><input type="submit" id="sub_addGame" value="Submit"></td>
+<td><input type="submit" id="sub_paymentOpt" value="Submit"></td>
 </tr>
 
 
@@ -33,18 +33,14 @@
 
 
 <script>
-     $('#addgame').submit(function(e){
+     $('#addPayOpt').submit(function(e){
             e.preventDefault()
-            var gameType = $('#gameType').val();
-            var countryOne = $('#countryOne').val();
-            var countryTwo = $('#countryTwo').val();
-            var tornamName = $('#tornamName').val();
-            var gameDay = $('#gameDay').val();
-            var gameTime = $('#gameTime').val();
-            var statusId = $('#statusId').val();
-            var sub_addGame = $('#sub_addGame').val();
-            $.post('Actions/game.php' , {gameType:gameType, countryOne:countryOne, 
-            countryTwo:countryTwo, tornamName:tornamName, gameDay:gameDay, gameTime:gameTime, statusId:statusId, sub_addGame:sub_addGame}, function(data){
+            var methodName = $('#methodName').val();
+            var methodType = $('#methodType').val();
+            var number = $('#number').val();
+            var sub_paymentOpt = $('#sub_paymentOpt').val();
+            $.post('Actions/payment.php' , {methodName:methodName, methodType:methodType, 
+            number:number, sub_paymentOpt:sub_paymentOpt}, function(data){
                 $('#Load').html(data);
             })
         })

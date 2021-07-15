@@ -1,6 +1,10 @@
 <?php 
 session_start();
 include"Actions/connect.php";
+if(!isset($_SESSION['logedInUserId'])){
+echo '<script>window.location.href = "login.php";</script>';
+}
+
 if(isset($_SESSION['logedInUserId'])){
 
 $userId = $_SESSION['logedInUserId'];

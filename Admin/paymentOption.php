@@ -1,4 +1,18 @@
-<?php include"inc/header.php"?>
+<?php 
+include"inc/header.php";
+
+if(isset($_GET['deleteId'])){
+    $deleteId = $_GET['deleteId'];
+
+    $query = "DELETE FROM payment_method WHERE id = '$deleteId'";
+    $result = mysqli_query($con, $query);
+    if($result){
+        $msg =  "Delete Success";
+    }else{
+        $msg = "Delete Unsuccess";
+    }
+}
+?>
 <section id="main-content">
 <h3 class="tbl-head">All Payment Option ||  <a href="add_payment_option.php" class="btn btn-info">Add New</a></h3>
 <div style="width:100%; overflow-x:scroll">
@@ -17,7 +31,7 @@
 
 <?php 
 $i = 1;
-$queryy = "SELECT * FROM payment_method WHERE  statusId=2";
+$queryy = "SELECT * FROM payment_method";
 $resulyt = mysqli_query($con, $queryy);
 if($resulyt){
 if(mysqli_num_rows($resulyt) > 0){
@@ -25,13 +39,12 @@ while($roww = mysqli_fetch_array($resulyt)){
 ?>
 
 <tr>
-<td>1</td>
+<td><?php echo $i; $i++;?></td>
 <td><?php echo $roww['methodName']?></td>
 <td><?php echo $roww['methodType']?></td>
-<td><td><?php echo $roww['number']?></td></td>
+<td><?php echo $roww['number']?></td>
 <td>
-<a href="#" class="btn btn-primary">Edit</a>
-<a href="#" class="btn btn-danger">Delete</a>
+<a href="?deleteId=<?php echo $roww['id']?>" onclick="return confirm('Are you Sure to Delete?')" class="btn btn-danger">Delete</a>
 </td>
 </tr>
 

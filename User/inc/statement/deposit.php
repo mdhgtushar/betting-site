@@ -16,7 +16,7 @@
 </tr>
 <?php 
 $userId = $_SESSION['logedInUserId'];
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=1";
+$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=1 ORDER BY id desc";
 $resulyt = mysqli_query($con, $queryy);
 if($resulyt){
 if(mysqli_num_rows($resulyt) > 0){

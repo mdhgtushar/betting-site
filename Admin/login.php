@@ -74,17 +74,16 @@
 <body>
     <section class="main-section">
     <div class="login-box">
-        <h1>Log In</h1>
+        <h1>Admin Log In</h1>
         <p class="col-dng" id="Load"> </p>
-        <form action="" method="post" id="login_submit">
-            <label for="">User Id</label>
-            <input type="text" id="userName" placeholder="User Name">
+        <form id="login_submit">
+            <label for="">Email Id</label>
+            <input type="email" id="userName" placeholder="Email">
             <label for="">Password</label>
             <input type="password" id="password" placeholder="password">
             <input type="submit" value="Login">
         </form>
     </div>
-    <p>Not have an account?<a href="register.php">Sign Up</a></p>
 </section>
 
 <script>

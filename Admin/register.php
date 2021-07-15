@@ -1,3 +1,4 @@
+<?php include "inc/header.php"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,5 +154,5 @@ while($rowy = mysqli_fetch_array($resulty)){
              topFunction() ;
         })
 </script>
-</body>
-</html>
+
+<?php include "inc/footer.php"?>

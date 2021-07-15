@@ -11,33 +11,77 @@
 <th>Question</th>
 <th>Answer</th>
 <th>Ammount</th>
-<th>Return</th>
+<th>Return Rate</th>
 <th>Total Win</th>
-<th>Return Amount(won) [Minus 0.02% sponsor fee]</th>
+<th>Return Amount(won) [0.02% fee]</th>
 <th>Sponsor Fee (0.02%)</th>
-<th>Bet Sell </th>
+<th>Bet Sell Price</th>
+<th>Action</th>
 </tr>
 </thead>
 <tbody>
+
+<?php 
+$i = 1;
+$queryy = "SELECT * FROM user_bits";
+$resulyt = mysqli_query($con, $queryy);
+if($resulyt){
+if(mysqli_num_rows($resulyt) > 0){
+while($roww = mysqli_fetch_array($resulyt)){
+$gameid = $roww['id'];
+?>
+
 <tr>
-<td>Cricket</td>
+<td><?php echo $i; $i++;?></td>
 <td>Bangladesh Vs India</td>
 <td>T20 match</td>
-<td>12 jun</td>
-<td>7:00 am</td>
-<td><a href="" class="btn btn-danger">Live score</a></td>
-<td><a href="" class="btn btn-primary">Betting Option</a></td>
-<td>Live - <a href="" class="btn btn-danger">Live/Upcomming</a></td>
-
 <td>
-<a href="" class="btn btn-success">Pause Game</a>
-<a href="" class="btn btn-info">Game Finished</a>
-<a href="" class="btn btn-info">Hide Game</a>
-<a href="" class="btn btn-info">change Status</a>
-<a href="" class="btn btn-primary">edit</a>
-<a href="" class="btn btn-danger">Delete</a>
+<?php 
+$userId = $roww['gameId'];
+$clubQry = "SELECT * FROM games WHERE id='$userId'";
+$clubResult = mysqli_query($con, $clubQry);
+if(mysqli_num_rows($clubResult) > 0){
+$clbFetch = mysqli_fetch_array($clubResult);
+echo $clbFetch['countryOne'];
+echo " VS ";
+echo $clbFetch['countryTwo'];
+}
+?></td>
+<td>
+    <?php 
+$userId = $roww['quesId'];
+$clubQry = "SELECT * FROM bett_qus WHERE id='$userId'";
+$clubResult = mysqli_query($con, $clubQry);
+if(mysqli_num_rows($clubResult) > 0){
+$clbFetch = mysqli_fetch_array($clubResult);
+echo $clbFetch['ques'];
+}
+?>
 </td>
+<td>
+    
+<?php 
+$userId = $roww['ansId'];
+$clubQry = "SELECT * FROM bett_ans WHERE id='$userId'";
+$clubResult = mysqli_query($con, $clubQry);
+if(mysqli_num_rows($clubResult) > 0){
+$clbFetch = mysqli_fetch_array($clubResult);
+echo $clbFetch['answ'];
+}
+?>
+</td>
+<td><?php echo $roww['ammount']?></td>
+<td>0</td>
+<td>    0</td>
+<td>    0</td>
+<td>    0</td>
+<td>    0</td>
+<td>    <a href="" class="btn btn-danger">Cancel</a></td>
 </tr>
+
+
+<?php } } } ?>
+
 </tbody>
 </table>
 </div>

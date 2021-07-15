@@ -1,78 +1,8 @@
 <?php 
 session_start();
 include"Actions/connect.php";
-if(isset($_SESSION['logedInUserId'])){
-
-$userId = $_SESSION['logedInUserId'];
-$ammount = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=1 AND statusPo=1";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$ammount = $ammount + $ammountNew;
-}}}
-
-
-$withdrow = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=2 AND statusPo=1";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$withdrow = $withdrow + $ammountNew;
-}}}
-
-$withdrowPnd = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=2 AND statusPo=0";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$withdrowPnd = $withdrowPnd + $ammountNew;
-}}}
-
-$transfarBal = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=3";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$transfarBal = $ammountNew + $transfarBal;
-}}}
-
-
-
-
-$transfarBalToMe = 0;
-$query = "SELECT * FROM users WHERE id='$userId'";
-$result = mysqli_query($con, $query);
-
-if($result){
-if(mysqli_num_rows($result) > 0){
-while($row = mysqli_fetch_array($result)){
-
-$userId =  $row['userId'];
-
-
-$queryy = "SELECT * FROM transiction WHERE trnsfUserName='$userId' AND statusId=3";
-$resulyt = mysqli_query($con, $queryy);
-
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-   $ammountNew =  $roww['ammount'];
-$transfarBalToMe = $ammountNew + $transfarBalToMe;
-}}}
-}
-}
-}
-
-$balance = ($ammount + $transfarBalToMe) - ($withdrow + $withdrowPnd + $transfarBal);
+if(!isset($_SESSION['logedInAdminId'])){
+echo '<script>window.location.href = "login.php";</script>';
 }
 ?>
 <style>
@@ -101,8 +31,30 @@ $balance = ($ammount + $transfarBalToMe) - ($withdrow + $withdrowPnd + $transfar
             </div>
             <div class="header-nav">
                 <ul>
-                    <li><a href="deposit.php">Deposit (0)</a></li>
-                    <li><a href="withdrow.php">Widthrow (0)</a></li>
+                    <li><a href="deposit.php">Deposit (
+                      <?php 
+$queryy = "SELECT * FROM transiction WHERE  statusId=1 AND statusPo=0";
+$resulyt = mysqli_query($con, $queryy);
+if($resulyt){
+if(mysqli_num_rows($resulyt) > 0){
+        echo mysqli_num_rows($resulyt);
+}else{
+    echo "0";
+}}
+?>
+                        )</a></li>
+                    <li><a href="withdrow.php">Widthrow (
+                          <?php 
+$queryy = "SELECT * FROM transiction WHERE  statusId=2 AND statusPo=0";
+$resulyt = mysqli_query($con, $queryy);
+if($resulyt){
+if(mysqli_num_rows($resulyt) > 0){
+        echo mysqli_num_rows($resulyt);
+}else{
+    echo "0";
+}}
+?>
+                        )</a></li>
                 </ul>
             </div>
         </section>
@@ -167,11 +119,11 @@ $balance = ($ammount + $transfarBalToMe) - ($withdrow + $withdrowPnd + $transfar
                     <li class="menu-item-has-children dropdown">
                         <a href="#" onclick="menuSet()">Website settions <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <ul class="sub-menu display" id="menuSet">
-                            <li><a href="font-fontawesome.html">Font Awesome</a></li>
-                            <li><a href="font-themify.html">Themefy Icons</a></li>
+                            <li><a href="">Comming</a></li>
                         </ul>
                     </li>
-                    <li> <a href="widgets.html">  Admin List </a> </li>
+                    <li> <a href="adminList.php">  Admin List </a> </li>
+                    <li> <a href="logout.php">  Logout </a> </li>
                     
                 </ul>
             </div>

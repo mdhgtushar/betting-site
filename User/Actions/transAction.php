@@ -84,7 +84,6 @@ $balanceNow = ($ammount + $transfarBalToMe) - ($withdrow + $withdrowPnd + $trans
 
 if(isset($_POST['deposit_submit'])){
 $method = mysqli_real_escape_string($con,$_POST['method']);
-$valueTo = mysqli_real_escape_string($con,$_POST['valueTo']);
 $ammount = mysqli_real_escape_string($con,$_POST['ammount']);
 $valueFrom = mysqli_real_escape_string($con,$_POST['valueFrom']);
 $transId = mysqli_real_escape_string($con,$_POST['transId']);
@@ -96,10 +95,11 @@ $password = "";
 $dbname = "betting_site";
 
 
-$query = "INSERT INTO transiction ( method, valueTo , ammount , valueFrom , trnNum, userId, statusId ) 
-VALUES ('$method','$valueTo' , '$ammount' , '$valueFrom' , '$transId', '$userID', '1')";
+$query = "INSERT INTO transiction ( method,  ammount , valueFrom , trnNum, userId, statusId ) 
+VALUES ('$method', '$ammount' , '$valueFrom' , '$transId', '$userID', '1')";
 $result = mysqli_query($con,$query);
-if($result){ echo "<p class='col-suc'>Deposit submited.</p>"; }else{ echo "<p class='col-dng'>Something wrong </p>"; }
+if($result){ echo "<p class='col-suc'>Deposit submited.</p>"; 
+echo '<script>window.location.href = "statement.php?deposit";</script>';}else{ echo "<p class='col-dng'>Something wrong </p>"; }
 }
 
 

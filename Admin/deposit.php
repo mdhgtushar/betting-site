@@ -38,7 +38,6 @@ echo "<p class='col-dng'>Something Wrong</p>";
 <th>Request By</th>
 <th>Ammount</th>
 <th>Method</th>
-<th>Deposited to</th>
 <th>Deposited by</th>
 <th>Transaction Id</th>
 <th>Date</th>
@@ -77,7 +76,6 @@ if(mysqli_num_rows($clubResult) > 0){
 </td>
 <td><?php echo $roww['ammount']?></td>
 <td><?php echo $roww['method']?></td>
-<td><?php echo $roww['valueTo']?></td>
 <td><?php echo $roww['valueFrom']?></td>
 <td><?php echo $roww['trnNum']?></td>
 <td><?php echo $roww['subTime']?></td>

@@ -16,7 +16,7 @@
 <?php 
 $userId = $_SESSION['logedInUserId'];
 
-$queryy = "SELECT * FROM user_bits WHERE userid='$userId' AND statusId=1";
+$queryy = "SELECT * FROM user_bits WHERE userid='$userId' AND statusId=1 ORDER BY id desc";
 $resulyt = mysqli_query($con, $queryy);
 
 if($resulyt){

@@ -1,6 +1,16 @@
 <?php 
 include"inc/header.php";
 
+if(isset($_GET['deleteId'])){
+    $deleteId = $_GET['deleteId'];
+    $query = "DELETE FROM clubs WHERE id = '$deleteId'";
+    $result = mysqli_query($con, $query);
+    if($result){
+        $msg =  "Delete Success";
+    }else{
+        $msg = "Delete Unsuccess";
+    }
+}
 
 if(isset($_POST['Status_change'])){
 $statusId = mysqli_real_escape_string($con,$_POST['statusId']);
@@ -17,6 +27,8 @@ echo "<p class='col-dng'>Something Wrong</p>";
 }
 ?>
 <section id="main-content">
+    
+    <h3 class="tbl-head">All Clubs ||  <a href="paymentOption.php" class="btn btn-info">Add Club</a></h3>
 <div style="width:100%; overflow-x:scroll">
 <table id="customers">  
 
@@ -78,7 +90,7 @@ while($roww = mysqli_fetch_array($resulyt)){
 <td>
 
 <a href="" class="btn btn-primary">Edit</a></td><td>
-<a href="" class="btn btn-danger">Delete</a></td>
+<a href="?deleteId=<?php echo $roww['id']?>" onclick="return confirm('Are you sure to delete')" class="btn btn-danger">Delete</a></td>
 </tr>
 
 

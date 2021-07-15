@@ -12,7 +12,6 @@
 <th>Send to</th>
 <th>Date</th>
 <th>Note</th>
-<th>Status</th>
 <th>Action</th>
 </tr>
 </thead>
@@ -35,22 +34,7 @@ while($roww = mysqli_fetch_array($resulyt)){
 <td>md</td>
 <td><?php echo $roww['subTime']?></td>
 <td><a href="#">edit Note</a></td>
-<td><?php
- $statusPo = $roww['statusPo'];
- if($statusPo == 0){
-         echo "<span style='color:gray'>panding<span>";
- }elseif($statusPo == 1){
-        echo "<span style='color:green'>Accepted<span>";
- }elseif($statusPo == 2){
-        echo "<span style='color:red'>Canceled<span>";
- }
- ?></td>
-<td>
-<a href="" class="btn btn-success">Approve</a>
-<a href="" class="btn btn-danger">Reject</a>
-<a href="" class="btn btn-info">Edit</a>
-<a href="" class="btn btn-danger">Delete</a>
-</td>
+<td><a href="" class="btn btn-danger">Delete</a></td>
 </tr>
 
 
