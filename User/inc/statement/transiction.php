@@ -37,7 +37,7 @@ while($roww = mysqli_fetch_array($resulyt)){
 <tr>
 <th>SN.</th>
 <th>Note</th>
-<th>username</th>
+<th>Sender Name</th>
 <th>Ammount</th>
 <th>Date and Time</th>
 </tr>
@@ -65,7 +65,19 @@ while($roww = mysqli_fetch_array($resulyt)){
 <tr>
 <td>1</td>
 <td><?php echo $roww['note']?></td>
-<td><?php echo $roww['trnsfUserName']?></td>
+    
+<td>
+       <?php 
+$userId = $roww['userId'];
+$clubQry = "SELECT * FROM users WHERE id='$userId'";
+$clubResult = mysqli_query($con, $clubQry);
+if(mysqli_num_rows($clubResult) > 0){
+    $clbFetch = mysqli_fetch_array($clubResult);
+    echo $clbFetch['fullName'];
+}
+?>
+</td>
+</td>
 <td><?php echo $roww['ammount']?></td>
 <td><?php echo $roww['subTime']?></td>
 </tr>
