@@ -2,14 +2,14 @@
 include"inc/header.php";
 
 if(isset($_GET['deleteId'])){
-    $deleteId = $_GET['deleteId'];
-    $query = "DELETE FROM clubs WHERE id = '$deleteId'";
-    $result = mysqli_query($con, $query);
-    if($result){
-        $msg =  "Delete Success";
-    }else{
-        $msg = "Delete Unsuccess";
-    }
+$deleteId = $_GET['deleteId'];
+$query = "DELETE FROM clubs WHERE id = '$deleteId'";
+$result = mysqli_query($con, $query);
+if($result){
+$msg =  "Delete Success";
+}else{
+$msg = "Delete Unsuccess";
+}
 }
 
 if(isset($_POST['Status_change'])){
@@ -27,8 +27,8 @@ echo "<p class='col-dng'>Something Wrong</p>";
 }
 ?>
 <section id="main-content">
-    
-    <h3 class="tbl-head">All Clubs ||  <a href="paymentOption.php" class="btn btn-info">Add Club</a></h3>
+
+<h3 class="tbl-head">All Clubs ||  <a href="add_club.php" class="btn btn-info">Add Club</a></h3>
 <div style="width:100%; overflow-x:scroll">
 <table id="customers">  
 
@@ -62,30 +62,32 @@ while($roww = mysqli_fetch_array($resulyt)){
 <tr>
 <td><?php echo $i; $i++;?></td>
 <td> <?php echo $roww['clubName']; ?></td>
-<td>      <?php echo $roww['clubOwner']; ?></td>
+<td>
+    This is club owner fild
+</td>
 <td><a href="" class="btn btn-primary">view club info</a></td>
 <td><?php echo $roww['openDate']; ?></td>
 <td>
-    <?php
- $statusPo = $roww['statusId'];
- if($statusPo == 2){
-         echo "<span style='color:red'>Inactive<span>";
-         $statusPoNew = 1;
- }elseif($statusPo == 1){
-        echo "<span style='color:green'>Active<span>";
-         $statusPoNew = 2;
- }else{
-         echo "<span style='color:red'>Inactive<span>";
-          $statusPoNew = 1;
- }
- ?>
+<?php
+$statusPo = $roww['statusId'];
+if($statusPo == 2){
+echo "<span style='color:red'>Inactive<span>";
+$statusPoNew = 1;
+}elseif($statusPo == 1){
+echo "<span style='color:green'>Active<span>";
+$statusPoNew = 2;
+}else{
+echo "<span style='color:red'>Inactive<span>";
+$statusPoNew = 1;
+}
+?>
 </td >
 <td>
-    <form action="" method="post">
-        <input type="hidden" name="userId" value="<?php echo $roww['id']?>">
-        <input type="hidden" name="statusId" value="<?php echo  $statusPoNew;?>">
-        <input type="submit" class="btn btn-success" name="Status_change" value="Change status">
-    </form>
+<form action="" method="post">
+<input type="hidden" name="userId" value="<?php echo $roww['id']?>">
+<input type="hidden" name="statusId" value="<?php echo  $statusPoNew;?>">
+<input type="submit" class="btn btn-success" name="Status_change" value="Change status">
+</form>
 </td>
 <td>
 

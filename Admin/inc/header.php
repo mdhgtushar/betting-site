@@ -86,7 +86,7 @@ if(mysqli_num_rows($resulyt) > 0){
                         <a href="#" onclick="menuClb()"> Manage Club <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <ul class="sub-menu display" id="menuClb">
                             <li><a href="club_list.php">Club List</a></li>
-                            <li><a href="">Club Withdrow</a></li>
+                            <li><a href="club-withrow.php">Club Withdrow</a></li>
                             <li><a href="">Received Message</a></li>
                             <li><a href="">Send Message</a></li>
                             <li><a href="">Club Comission</a></li>

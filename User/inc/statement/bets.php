@@ -15,7 +15,7 @@
 </tr>
 <?php 
 $userId = $_SESSION['logedInUserId'];
-
+$i = 1;
 $queryy = "SELECT * FROM user_bits WHERE userid='$userId' AND statusId=1 ORDER BY id desc";
 $resulyt = mysqli_query($con, $queryy);
 
@@ -24,7 +24,7 @@ if(mysqli_num_rows($resulyt) > 0){
 while($roww = mysqli_fetch_array($resulyt)){
 ?>
 <tr>
-<td>1</td>
+<td><?php echo $i++;?></td>
 <td>
 
 <?php 
@@ -63,10 +63,34 @@ echo $clbFetch['answ'];
 ?>
 </td>
 <td><?php echo $roww['ammount']?></td>
-<td><?php echo $roww['rate']?></td>
-<td>--</td>
+<td>
+    <?php 
+$userId = $roww['ansId'];
+$clubQry = "SELECT * FROM bett_ans WHERE id='$userId'";
+$clubResult = mysqli_query($con, $clubQry);
+if(mysqli_num_rows($clubResult) > 0){
+$clbFetch = mysqli_fetch_array($clubResult);
+echo $clbFetch['betRate'];
+}
+?>
+</td>
+<td><?php echo $roww['winAmmount']?></td>
 <td><?php echo $roww['note']?></td>
-<td>--</td>
+<td>
+    <?php
+    $winAm = $roww['winAmmount'] ;
+    $winLos = $roww['winAmmount'] - $roww['ammount'];
+    if($winAm == ""){
+        echo "--";
+    }elseif($winLos > 1){
+        echo "<b style='color:green'>Win</b>";
+    }elseif($winLos < 1){
+        echo "<b style='color:red'>Lose</b>";
+    }
+     
+    
+    
+    ?></td>
 </tr>
 
 <?php

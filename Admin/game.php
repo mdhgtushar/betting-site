@@ -103,7 +103,7 @@ if(mysqli_num_rows($clubResult) > 0){
 <td><?php echo $roww['gameDay'];?></td>
 <td><?php echo $roww['gameTime'];?></td>
 <td><a href="" class="btn btn-danger">Live score</a></td>
-<td><a href="" class="btn btn-primary">Betting Option</a></td>
+<td><a href="bit_option.php?id=<?php echo $roww['id'];?>" class="btn btn-primary">Betting Option</a></td>
 
 <td>
 <form action="" method="post">

@@ -73,9 +73,9 @@ email = '$email'
 WHERE id='$userID' ";
 $result = mysqli_query($con, $query);
 if($result){
-echo "Profile Update successful";
+echo "<p class='col-suc'>Profile Update successful</p>";
 }else{
-echo "Something Wrong";
+echo "<p class='col-dng'>Something Wrong</p>";
 }
 }
 

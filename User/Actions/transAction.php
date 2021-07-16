@@ -39,6 +39,26 @@ $ammountNew = $roww['ammount'];
 $withdrowPnd = $withdrowPnd + $ammountNew;
 }}}
 
+$betExp = 0;
+$queryy = "SELECT * FROM user_bits WHERE userid='$userId' AND statusId=1";
+$resulyt = mysqli_query($con, $queryy);
+if($resulyt){
+if(mysqli_num_rows($resulyt) > 0){
+while($roww = mysqli_fetch_array($resulyt)){
+$ammountNew = $roww['ammount'];
+$betExp = $betExp + $ammountNew;
+}}}
+
+$betWin = 0;
+$queryy = "SELECT * FROM user_bits WHERE userid='$userId' AND statusId=1";
+$resulyt = mysqli_query($con, $queryy);
+if($resulyt){
+if(mysqli_num_rows($resulyt) > 0){
+while($roww = mysqli_fetch_array($resulyt)){
+$ammountNew = $roww['winAmmount'];
+$betWin = $betWin + $ammountNew;
+}}}
+
 $transfarBal = 0;
 $queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=3";
 $resulyt = mysqli_query($con, $queryy);
@@ -76,10 +96,34 @@ $transfarBalToMe = $ammountNew + $transfarBalToMe;
 }
 }
 
-$balanceNow = ($ammount + $transfarBalToMe) - ($withdrow + $withdrowPnd + $transfarBal);
+$balanceNow = ($ammount + $transfarBalToMe + $betWin) - ($withdrow + $withdrowPnd + $transfarBal + $betExp);
 }
 
 
+
+
+
+if(isset($_POST['bit_submit'])){
+$gameId = mysqli_real_escape_string($con,$_POST['gameId']);
+$quesId = mysqli_real_escape_string($con,$_POST['quesId']);
+$answId = mysqli_real_escape_string($con,$_POST['answId']);
+$ammount = mysqli_real_escape_string($con,$_POST['ammount']);
+$userId = mysqli_real_escape_string($con,$_POST['userId']);
+
+
+if($ammount < $balanceNow){
+$query = "INSERT INTO user_bits ( gameId , quesId , ansId ,ammount, userId ) 
+VALUES ('$gameId' , '$quesId' , '$answId' , '$ammount', '$userId' )";
+$result = mysqli_query($con,$query);
+if($result){ echo "<p class='col-suc'>success!</p>"; 
+echo '<script>setTimeout(function() {window.location.href = "index.php";}, 3000)</script>';
+
+}else{ echo "<p class='col-dng'>Something wrong!</p>"; }
+}else{
+    echo "<p class='col-dng'>You have not enough balance to Place a bet</p>";
+echo '<script>setTimeout(function() {window.location.href = "index.php";}, 3000)</script>';
+}
+}
 
 
 if(isset($_POST['deposit_submit'])){
@@ -89,17 +133,13 @@ $valueFrom = mysqli_real_escape_string($con,$_POST['valueFrom']);
 $transId = mysqli_real_escape_string($con,$_POST['transId']);
 
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "betting_site";
-
 
 $query = "INSERT INTO transiction ( method,  ammount , valueFrom , trnNum, userId, statusId ) 
 VALUES ('$method', '$ammount' , '$valueFrom' , '$transId', '$userID', '1')";
 $result = mysqli_query($con,$query);
 if($result){ echo "<p class='col-suc'>Deposit submited.</p>"; 
 echo '<script>window.location.href = "statement.php?deposit";</script>';}else{ echo "<p class='col-dng'>Something wrong </p>"; }
+
 }
 
 
@@ -110,7 +150,7 @@ $methodType = mysqli_real_escape_string($con,$_POST['methodType']);
 $ammount = mysqli_real_escape_string($con,$_POST['ammount']);
 $valueTo = mysqli_real_escape_string($con,$_POST['valueTo']);
 if($ammount < $balanceNow){
-$query = "INSERT INTO transiction (method, methodType , ammount , valueTo, userId, statusId) 
+$query = "INSERT INTO transiction (method, methodType , ammount , valueTo, userId, statusId)
 VALUES ('$method','$methodType' , '$ammount' , '$valueTo', '$userID', '2')";
 $result = mysqli_query($con,$query);
 if($result){ echo "<p class='col-suc'>Withdrow request submited. we will review it soon.</p>";

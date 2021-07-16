@@ -1,6 +1,6 @@
 <?php include"inc/header.php"?>
 <section id="main-content">
-<h3 class="tbl-head">Dashbord</h3>
+<h3 class="tbl-head">Dashbordd</h3>
 <table id="customers">  
 <tbody>
 
