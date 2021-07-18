@@ -39,7 +39,6 @@ echo "<p class='col-dng'>Something Wrong</p>";
 <th>sl</th>
 <th>Username</th>
 <th>userId</th>
-<th>Credit (tk)</th>
 <th>Login</th>
 <th>Email</th>
 <th>Phone</th>
@@ -60,20 +59,19 @@ $queryy = "SELECT * FROM users";
 $resulyt = mysqli_query($con, $queryy);
 if($resulyt){
 if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
+while($rowwq = mysqli_fetch_array($resulyt)){
 ?>
 
 <tr>
 <td><?php echo $i; $i++;?></td>
-<td><?php echo $roww['fullName']?></td>
-<td><?php echo $roww['userId']?></td>
-<td>0</td>
+<td><?php echo $rowwq['fullName']?></td>
+<td><?php echo $rowwq['userId']?></td>
 <td><a href="" class="btn btn-success">Login</a></td>
-<td><?php echo $roww['email']?></td>
-<td><?php echo $roww['mobileNumber']?></td>
+<td><?php echo $rowwq['email']?></td>
+<td><?php echo $rowwq['mobileNumber']?></td>
 <td>
 <?php 
-$clubId = $roww['clubId'];
+$clubId = $rowwq['clubId'];
 $clubQry = "SELECT * FROM clubs WHERE id='$clubId'";
 $clubResult = mysqli_query($con, $clubQry);
 if(mysqli_num_rows($clubResult) > 0){
@@ -82,11 +80,11 @@ if(mysqli_num_rows($clubResult) > 0){
 }
 ?>
 </td>
-<td><?php echo $roww['sopnsorsUserId']?></td>
-<td><?php echo $roww['createTime']?></td>
+<td><?php echo $rowwq['sopnsorsUserId']?></td>
+<td><?php echo $rowwq['createTime']?></td>
 
 <td><?php
- $statusPo = $roww['statusId'];
+ $statusPo = $rowwq['statusId'];
  if($statusPo == 0){
       $statusPosub = 1;
          echo "<span style='color:red'>Inactive<span>";
@@ -100,15 +98,15 @@ if(mysqli_num_rows($clubResult) > 0){
 
 <td>
     <form action="" method="post">
-        <input type="hidden" name="userId" value="<?php echo $roww['userId']?>">
+        <input type="hidden" name="userId" value="<?php echo $rowwq['userId']?>">
         <input type="hidden" name="statusId" value="<?php echo $statusPosub;?>">
         <input type="submit" class="btn btn-info" name="Status_change" value="Change Status">
     </form>
     
 </td>
-<td><a href="userEdit.php?id=<?php echo $roww['id']?>" class="btn btn-primary">Edit</a></td>
-<td><a href="?deleteId=<?php echo $roww['id']?>" onclick="return confirm('Are you sure? to delete')" class="btn btn-danger">Delete</a></td>
-<td><a href="userEdit.php?passEditId=<?php echo $roww['id']?>" class="btn btn-success">Edit Password</a></td>
+<td><a href="userEdit.php?id=<?php echo $rowwq['id']?>" class="btn btn-primary">Edit</a></td>
+<td><a href="?deleteId=<?php echo $rowwq['id']?>" onclick="return confirm('Are you sure? to delete')" class="btn btn-danger">Delete</a></td>
+<td><a href="userEdit.php?passEditId=<?php echo $rowwq['id']?>" class="btn btn-success">Edit Password</a></td>
 </tr>
 <?php } } } ?>
 </tbody>

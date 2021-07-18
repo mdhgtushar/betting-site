@@ -1,0 +1,23 @@
+club list
+----------
+show club info
+change status
+edit
+delete
+
+
+
+club withrow
+-------
+show club withrow
+
+
+
+received message
+--------------
+
+send message
+-----
+
+club comission
+---------

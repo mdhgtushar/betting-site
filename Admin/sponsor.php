@@ -6,42 +6,25 @@
 <thead>
 <tr>
 <th>SL.</th>
-<th>Send By</th>
-<th>Ammount</th>
-<th>Send to</th>
-<th>Date</th>
-<th>Note</th>
-<th>Status</th>
-<th>Action</th>
-<th>Action</th>
-<th>Action</th>
-<th>Action</th>
-<th>Action</th>
+<th>User Name</th>
+<th>Sponsor Name</th>
 </tr>
 </thead>
 <tbody>
+<?php 
+$i = 1;
+$queryy = "SELECT * FROM users WHERE sopnsorsUserId!='' ";
+$resulyt = mysqli_query($con, $queryy);
+if(mysqli_num_rows($resulyt) > 0){
+while($roww = mysqli_fetch_array($resulyt)){
+?>
 <tr>
-<td>1</td>
-<td>Md Hg Tushar</td>
-<td>1000</td>
-<td>0196896078910</td>
-<td>0196896078910</td>
-<td>10-10-2021</td>
-<td><a href="#">edit Note</a></td>
-<td>Apporoved</td>
-<td>
-<a href="" class="btn btn-success">Approve</a>
-</td>
-<td>
-<a href="" class="btn btn-danger">Reject</a>
-</td>
-<td>
-<a href="" class="btn btn-info">Edit</a>
-</td>
-<td>
-<a href="" class="btn btn-danger">Delete</a>
-</td>
+<td><?php echo $i++;?></td>
+<td><?php echo $roww['userId'];?></td>
+<td><?php echo $roww['sopnsorsUserId'];?></td>
 </tr>
+<?php } } ?>
+
 </tbody>
 </table>
 </div>

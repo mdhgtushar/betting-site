@@ -1,106 +1,13 @@
 <?php
 session_start();
 include "connect.php";
+include "balance.php";
 
-$userID = $_SESSION['logedInUserId'];
-
-
-if(isset($_SESSION['logedInUserId'])){
-
-$userId = $_SESSION['logedInUserId'];
-$ammount = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=1 AND statusPo=1";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$ammount = $ammount + $ammountNew;
-}}}
-
-
-$withdrow = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=2 AND statusPo=1";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$withdrow = $withdrow + $ammountNew;
-}}}
-
-$withdrowPnd = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=2 AND statusPo=0";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$withdrowPnd = $withdrowPnd + $ammountNew;
-}}}
-
-$betExp = 0;
-$queryy = "SELECT * FROM user_bits WHERE userid='$userId' AND statusId=1";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$betExp = $betExp + $ammountNew;
-}}}
-
-$betWin = 0;
-$queryy = "SELECT * FROM user_bits WHERE userid='$userId' AND statusId=1";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['winAmmount'];
-$betWin = $betWin + $ammountNew;
-}}}
-
-$transfarBal = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=3";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$transfarBal = $ammountNew + $transfarBal;
-}}}
 
 
 
 
-$transfarBalToMe = 0;
-$query = "SELECT * FROM users WHERE id='$userId'";
-$result = mysqli_query($con, $query);
-
-if($result){
-if(mysqli_num_rows($result) > 0){
-while($row = mysqli_fetch_array($result)){
-
-$userId =  $row['userId'];
-
-
-$queryy = "SELECT * FROM transiction WHERE trnsfUserName='$userId' AND statusId=3";
-$resulyt = mysqli_query($con, $queryy);
-
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-   $ammountNew =  $roww['ammount'];
-$transfarBalToMe = $ammountNew + $transfarBalToMe;
-}}}
-}
-}
-}
-
-$balanceNow = ($ammount + $transfarBalToMe + $betWin) - ($withdrow + $withdrowPnd + $transfarBal + $betExp);
-}
-
-
-
+$userID = $_SESSION['logedInUserId'];
 
 
 if(isset($_POST['bit_submit'])){
@@ -113,15 +20,15 @@ $userId = mysqli_real_escape_string($con,$_POST['userId']);
 
 if($ammount < $balanceNow){
 $query = "INSERT INTO user_bits ( gameId , quesId , ansId ,ammount, userId ) 
-VALUES ('$gameId' , '$quesId' , '$answId' , '$ammount', '$userId' )";
+VALUES ('$gameId' , '$quesId' , '$answId' , '$ammount', '$userID' )";
 $result = mysqli_query($con,$query);
 if($result){ echo "<p class='col-suc'>success!</p>"; 
-echo '<script>setTimeout(function() {window.location.href = "index.php";}, 3000)</script>';
+echo '<script>setTimeout(function() {window.location.href = "index.php";}, 1000)</script>';
 
 }else{ echo "<p class='col-dng'>Something wrong!</p>"; }
 }else{
     echo "<p class='col-dng'>You have not enough balance to Place a bet</p>";
-echo '<script>setTimeout(function() {window.location.href = "index.php";}, 3000)</script>';
+echo '<script>setTimeout(function() {window.location.href = "index.php";}, 1000)</script>';
 }
 }
 
@@ -137,8 +44,8 @@ $transId = mysqli_real_escape_string($con,$_POST['transId']);
 $query = "INSERT INTO transiction ( method,  ammount , valueFrom , trnNum, userId, statusId ) 
 VALUES ('$method', '$ammount' , '$valueFrom' , '$transId', '$userID', '1')";
 $result = mysqli_query($con,$query);
-if($result){ echo "<p class='col-suc'>Deposit submited.</p>"; 
-echo '<script>window.location.href = "statement.php?deposit";</script>';}else{ echo "<p class='col-dng'>Something wrong </p>"; }
+if($result){ echo "<p class='col-suc'>Deposit submited.</p>";
+echo '<script>window.location.href = "statement.php?deposit";</script>'; }else{ echo "<p class='col-dng'>Something wrong </p>"; }
 
 }
 
@@ -172,7 +79,7 @@ $password = mysqli_real_escape_string($con,$_POST['password']);
 
 
 
-$queryn = "SELECT * FROM users WHERE id='$userID' AND password='$password'";
+$queryn = "SELECT * FROM users WHERE id='$userID' AND password='$password' AND userId='$username'";
 $resultn = mysqli_query($con, $queryn);
 
 if($resultn){
@@ -192,7 +99,7 @@ echo '<script>window.location.href = "profile.php?Transfar";</script>';
 }
 
 }else{
-    echo "<p class='col-dng'>Password is incorrect</p>";
+    echo "<p class='col-dng'>Password OR UserId not Matched</p>";
 }
 }
 

@@ -72,7 +72,6 @@ echo "<p class='col-dng'>Something Wrong</p>";
 <th>Action</th>
 <th>Action</th>
 <th>Action</th>
-<th>Action</th>
 </tr>
 </thead>
 <tbody>
@@ -124,24 +123,6 @@ $statusPosub = 1;
 <input type="submit" class="btn btn-info" name="live_upcom" value="Live/Upcomming">
 </form>
 </td>
-<td><a href="" class="btn btn-success">Pause Game</a></td>
-<td>
-<form action="" method="post">
-<?php
-$statusPo = $roww['statusRan'];
-if($statusPo == 1){
-$statusPosub = 2;
-}elseif($statusPo == 2){
-$statusPosub = 1;
-}else{
-$statusPosub = 1;
-}
-?>
-<input type="hidden" name="gameId" value="<?php echo $roww['id']?>">
-<input type="hidden" name="statusId" value="<?php echo $statusPosub;?>">
-<input type="submit" class="btn btn-info" name="game_finished" value="Game Finished">
-</form>
-</td>
 <td>
 <form action="" method="post">
 <?php
@@ -164,6 +145,23 @@ $statusPosub = 0;
 </form>
 </td>
 <td><a href="edit_game.php?id=<?php echo $roww['id']?>" class="btn btn-primary">edit</a></td>
+<td>
+<form action="" method="post">
+<?php
+$statusPo = $roww['statusRan'];
+if($statusPo == 1){
+$statusPosub = 2;
+}elseif($statusPo == 2){
+$statusPosub = 1;
+}else{
+$statusPosub = 1;
+}
+?>
+<input type="hidden" name="gameId" value="<?php echo $roww['id']?>">
+<input type="hidden" name="statusId" value="<?php echo $statusPosub;?>">
+<input type="submit" class="btn btn-info" name="game_finished" value="Game Finished">
+</form>
+</td>
 <td><a href="?deleteId=<?php echo $roww['id']?>" onclick="return confirm('Are you sure to delete?')" class="btn btn-danger">Delete</a>
 </td>
 </tr>

@@ -2,7 +2,7 @@
 <style>
   .h3style{
         padding: 10px;
-    background: #eee;
+    background: <?php echo $color2;?>;
     margin: 8px 0;
   }
 </style>
@@ -29,6 +29,9 @@
 <div class="menu-box">
 <div class="menu-box-title"><a href="statement.php?transiction">Transiction</a></div>
 </div>
+<div class="menu-box">
+<div class="menu-box-title"><a href="statement.php?sponsors">sponsors</a></div>
+</div>
 </div>
 
 <div class="menu-button" style="right: 0;">
@@ -45,6 +48,8 @@ if(isset($_GET['bets'])){
   include "inc/statement/withdrow.php";
 }elseif(isset($_GET['transiction'])){
   include "inc/statement/transiction.php";
+}elseif(isset($_GET['sponsors'])){
+  include "inc/statement/sponsors.php";
 }else{
   include "inc/statement/bets.php";
 }

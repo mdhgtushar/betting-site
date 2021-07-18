@@ -1,0 +1,24 @@
+Dashbord
+userList
+Sponsor List
+Message
+Mangage Club
+	Club List
+	Club Withrow
+	Received Message
+	Sent Message
+	Club Comission
+Game List
+Finished Game List
+Auto Stack Manage
+Bet List
+	Game Bet List
+	Ludu odd Bet List
+	Ludu odd Rate
+	Coin Bet List
+	Coin Rate
+Deposit List
+Withdrow List
+Payment Option
+Websit Settings
+Admin List

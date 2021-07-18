@@ -81,7 +81,7 @@ if(mysqli_num_rows($clubResult) > 0){
 <td><?php echo $roww['valueTo']?></td>
 <td><?php echo $roww['methodType']?></td>
 <td><?php echo $roww['subTime']?></td>
-<td><a href="#">edit Note</a></td>
+<td><a href="editNote.php?id=<?php echo $roww['id']?>">edit Note</a></td>
 <td><?php
  $statusPo = $roww['statusPo'];
  if($statusPo == 0){

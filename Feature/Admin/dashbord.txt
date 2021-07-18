@@ -1,0 +1,20 @@
+Admin Profit
+Deposit
+Deposit Tk
+Withdraw
+withdraw Tk
+All User
+User Tk
+Club 
+Club Tk
+Games 
+Admin
+
+
+----------
+Show those information by time
+
+Today
+Previous Day
+Last 7day
+Last 30 day

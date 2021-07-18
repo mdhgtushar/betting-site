@@ -1,0 +1,6 @@
+Show user Information
+Login account
+Change Status
+Edit
+Delete
+Edit Password

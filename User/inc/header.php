@@ -1,105 +1,10 @@
 <?php 
 session_start();
 include"Actions/connect.php";
+include"Actions/balance.php";
 if(!isset($_SESSION['logedInUserId'])){
 echo '<script>window.location.href = "login.php";</script>';
 }
-
-if(isset($_SESSION['logedInUserId'])){
-
-$userId = $_SESSION['logedInUserId'];
-$ammount = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=1 AND statusPo=1";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$ammount = $ammount + $ammountNew;
-}}}
-
-
-$withdrow = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=2 AND statusPo=1";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$withdrow = $withdrow + $ammountNew;
-}}}
-
-$withdrowPnd = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=2 AND statusPo=0";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$withdrowPnd = $withdrowPnd + $ammountNew;
-}}}
-
-$betExp = 0;
-$queryy = "SELECT * FROM user_bits WHERE userid='$userId' AND statusId=1";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$betExp = $betExp + $ammountNew;
-}}}
-
-$betWin = 0;
-$queryy = "SELECT * FROM user_bits WHERE userid='$userId' AND statusId=1";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['winAmmount'];
-$betWin = $betWin + $ammountNew;
-}}}
-
-$transfarBal = 0;
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=3";
-$resulyt = mysqli_query($con, $queryy);
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-$ammountNew = $roww['ammount'];
-$transfarBal = $ammountNew + $transfarBal;
-}}}
-
-
-
-
-$transfarBalToMe = 0;
-$query = "SELECT * FROM users WHERE id='$userId'";
-$result = mysqli_query($con, $query);
-
-if($result){
-if(mysqli_num_rows($result) > 0){
-while($row = mysqli_fetch_array($result)){
-
-$userId =  $row['userId'];
-
-
-$queryy = "SELECT * FROM transiction WHERE trnsfUserName='$userId' AND statusId=3";
-$resulyt = mysqli_query($con, $queryy);
-
-if($resulyt){
-if(mysqli_num_rows($resulyt) > 0){
-while($roww = mysqli_fetch_array($resulyt)){
-   $ammountNew =  $roww['ammount'];
-$transfarBalToMe = $ammountNew + $transfarBalToMe;
-}}}
-}
-}
-}
-
-$balance = ($ammount + $transfarBalToMe + $betWin) - ($withdrow + $withdrowPnd + $transfarBal + $betExp);
-}
-
-
 
 
 

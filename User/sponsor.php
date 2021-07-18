@@ -13,7 +13,6 @@ include"inc/header.php";
 <tr>
 <th>SN.</th>
 <th>Joining Date</th>
-<th>Recent Bet Date</th>
 <th>Name</th>
 <th>Userneme</th>
 <th>Total bet</th>
@@ -40,19 +39,55 @@ while($roww = mysqli_fetch_array($resulyt)){
 ?>
 <tr>
 <td>1</td>
-<td>12 Jul 2021</td>
-<td>12 Jul 2021</td>
+<td><?php echo $roww['createTime']?></td>
 <td><?php echo $roww['fullName']?></td>
 <td><?php echo $roww['userId']?></td>
-<td>20</td>
-<td>200tk</td>
+<td>
+    <?php 
+    $sponUsrId = $roww['id'];
+    $queryya = "SELECT * FROM user_bits WHERE userId='$sponUsrId' AND statusId=1";
+$resulyta = mysqli_query($con, $queryya);
+if(mysqli_num_rows($resulyta) > 0){
+while($rowwa = mysqli_fetch_array($resulyta)){
+$userId = $rowwa['ansId'];
+$clubQry = "SELECT * FROM bett_ans WHERE id='$userId'";
+$clubResult = mysqli_query($con, $clubQry);
+if(mysqli_num_rows($clubResult) > 0){
+   echo mysqli_num_rows($clubResult);
+}else{ echo "0";}
+} }else{ echo "0";}
+?>
+</td>
+<td>
+    <?php 
+    $sponUsrId = $roww['id'];
+    $queryya = "SELECT * FROM user_bits WHERE userId='$sponUsrId' AND statusId=1";
+$resulyta = mysqli_query($con, $queryya);
+$returnBet = 0;
+if(mysqli_num_rows($resulyta) > 0){
+while($rowwa = mysqli_fetch_array($resulyta)){
+        
+$userId = $rowwa['ansId'];
+$clubQry = "SELECT * FROM bett_ans WHERE id='$userId'";
+$clubResult = mysqli_query($con, $clubQry);
+if(mysqli_num_rows($clubResult) > 0){
+$clbFetch = mysqli_fetch_array($clubResult);
+    $winLos = $clbFetch['statusId'];
+    if($winLos != 3){
+        $returnBet =  ($rowwa['ammount']*0.02);
+    }
+}
+} }
+echo $returnBet;
+?>
+</td>
 </tr>
 
 <?php
 }}}
 }
 }else{
-echo"not found any user!";
+echo"not found any sponsor!";
 }
 }
 

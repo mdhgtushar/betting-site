@@ -12,11 +12,10 @@
 <th>Status</th>
 <th>Note</th>
 <th>Requested at</th>
-<th>Accepted/Canceled at</th>
 </tr>
 <?php 
 $userId = $_SESSION['logedInUserId'];
-$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=1 ORDER BY id desc";
+$queryy = "SELECT * FROM transiction WHERE userid='$userId' AND statusId=1 ";
 $resulyt = mysqli_query($con, $queryy);
 if($resulyt){
 if(mysqli_num_rows($resulyt) > 0){
@@ -42,7 +41,6 @@ while($roww = mysqli_fetch_array($resulyt)){
  
  ?></td>
 <td><?php echo $roww['note']?></td>
-<td><?php echo $roww['subTime']?></td>
 <td><?php echo $roww['subTime']?></td>
 </tr>
 

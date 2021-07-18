@@ -1,0 +1,12 @@
+Show all game
+add update
+pause game
+hide game
+change status live upcomming
+finished game
+delete game
+
+
+Finished game
+------------
+show all finished game

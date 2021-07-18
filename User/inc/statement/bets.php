@@ -16,7 +16,7 @@
 <?php 
 $userId = $_SESSION['logedInUserId'];
 $i = 1;
-$queryy = "SELECT * FROM user_bits WHERE userid='$userId' AND statusId=1 ORDER BY id desc";
+$queryy = "SELECT * FROM user_bits WHERE userid='$userId' ORDER BY id desc";
 $resulyt = mysqli_query($con, $queryy);
 
 if($resulyt){
@@ -33,9 +33,9 @@ $clubQry = "SELECT * FROM games WHERE id='$userId'";
 $clubResult = mysqli_query($con, $clubQry);
 if(mysqli_num_rows($clubResult) > 0){
 $clbFetch = mysqli_fetch_array($clubResult);
-echo $clbFetch['countryOne'];
+echo $countryOne = $clbFetch['countryOne'];
 echo " VS ";
-echo $clbFetch['countryTwo'];
+echo  $countryTwo =$clbFetch['countryTwo'];
 }
 ?>
 </td>
@@ -58,7 +58,16 @@ $clubQry = "SELECT * FROM bett_ans WHERE id='$userId'";
 $clubResult = mysqli_query($con, $clubQry);
 if(mysqli_num_rows($clubResult) > 0){
 $clbFetch = mysqli_fetch_array($clubResult);
-echo $clbFetch['answ'];
+
+
+$answare = $clbFetch['answ'];
+if($answare == "Team 1"){
+    echo  $countryOne;
+}elseif($answare == "Team 2"){
+    echo  $countryTeo;
+}else{
+echo $answare;
+}
 }
 ?>
 </td>
@@ -71,22 +80,32 @@ $clubResult = mysqli_query($con, $clubQry);
 if(mysqli_num_rows($clubResult) > 0){
 $clbFetch = mysqli_fetch_array($clubResult);
 echo $clbFetch['betRate'];
+$winLos = $clbFetch['statusId'];
 }
+
 ?>
 </td>
-<td><?php echo $roww['winAmmount']?></td>
+<td><?php echo $roww['ammount'] * $clbFetch['betRate'];  ?></td>
 <td><?php echo $roww['note']?></td>
 <td>
     <?php
-    $winAm = $roww['winAmmount'] ;
-    $winLos = $roww['winAmmount'] - $roww['ammount'];
-    if($winAm == ""){
-        echo "--";
-    }elseif($winLos > 1){
+
+$statusId = $roww['statusId'];
+if($statusId == 3){
+        echo "<b style='color:red'>Canceled</b>";
+}else{
+    if($winLos == 1){
         echo "<b style='color:green'>Win</b>";
-    }elseif($winLos < 1){
+    }elseif($winLos == 2){
         echo "<b style='color:red'>Lose</b>";
+    }elseif($winLos == 0){
+        echo "<b style='color:gray'>Panding</b>";
+    }elseif($winLos == 3){
+        echo "<b style='color:gray'>Returned</b>";
+    }else{
+        echo "--";
     }
+}
      
     
     

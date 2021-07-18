@@ -106,7 +106,7 @@ if(mysqli_num_rows($clubResult) > 0){
 <ul>
 
 <?php 
-$queryya = "SELECT * FROM bett_qus WHERE gameId=$gameid";
+$queryya = "SELECT * FROM bett_qus WHERE gameId=$gameid AND statusId=1";
 $resulyta = mysqli_query($con, $queryya);
 if($resulyta){
 if(mysqli_num_rows($resulyta) > 0){
@@ -120,13 +120,25 @@ $quesId = $rowwa['id'];
 <table>
 <tr>
 <?php 
-$queryya = "SELECT * FROM bett_ans WHERE gameId=$gameid AND quesId=$quesId";
+$queryya = "SELECT * FROM bett_ans WHERE gameId=$gameid AND quesId=$quesId AND statusId!=1";
 $resulytae = mysqli_query($con, $queryya);
 if($resulytae){
 if(mysqli_num_rows($resulytae) > 0){
 while($rowwae = mysqli_fetch_array($resulytae)){
 ?>
-<td><a href="#" onclick="ans<?php echo $rowwae['id'];?>()"><?php echo $rowwae['answ'];?> <b> - <?php echo $rowwae['betRate'];?></b></a></td>
+<td><a href="#" onclick="ans<?php echo $rowwae['id'];?>()">
+<?php  
+
+$answare = $rowwae['answ'];
+if($answare == "Team 1"){
+    echo $roww['countryOne'];
+}elseif($answare == "Team 2"){
+    echo $roww['countryTwo'];
+}else{
+echo $answare;
+}
+?>
+<b> - <?php echo $rowwae['betRate'];?></b></a></td>
 
 <section class="modal-box transform" id="modal-box<?php echo $rowwae['id'];?>">
 <div class="modal-cont">
@@ -152,7 +164,7 @@ while($rowwae = mysqli_fetch_array($resulytae)){
 
 <div class="modal-tor-info"> Total Stake - <b  id="totlStk<?php echo $rowwae['id'];?>">..</b></div>
 <div class="modal-tor-info"> Possible Winning - <b  id="posbWin<?php echo $rowwae['id'];?>">..</b></div>
-<div class="modal-tor-info"> <input class="modal-input" type="submit" id="bit_submit<?php echo $rowwae['id'];?>" value="Submit"></div>
+<div class="modal-tor-info"> <input class="modal-input" type="submit" id="bit_submit<?php echo $rowwae['id'];?>" onclick="return confirm('Are you sure to place a bet?')" value="Submit"></div>
 </form>
 <div>
 <p id="Load"></p>
@@ -239,7 +251,7 @@ if(mysqli_num_rows($clubResult) > 0){
 <ul>
 
 <?php 
-$queryya = "SELECT * FROM bett_qus WHERE gameId=$gameid";
+$queryya = "SELECT * FROM bett_qus WHERE gameId=$gameid AND statusId=1";
 $resulyta = mysqli_query($con, $queryya);
 if($resulyta){
 if(mysqli_num_rows($resulyta) > 0){
@@ -253,13 +265,25 @@ $quesId = $rowwa['id'];
 <table>
 <tr>
 <?php 
-$queryya = "SELECT * FROM bett_ans WHERE gameId=$gameid AND quesId=$quesId";
+$queryya = "SELECT * FROM bett_ans WHERE gameId=$gameid AND quesId=$quesId AND statusId!=1";
 $resulytae = mysqli_query($con, $queryya);
 if($resulytae){
 if(mysqli_num_rows($resulytae) > 0){
 while($rowwae = mysqli_fetch_array($resulytae)){
 ?>
-<td><a href="#" onclick="ans<?php echo $rowwae['id'];?>()"><?php echo $rowwae['answ'];?> <b> - <?php echo $rowwae['betRate'];?></b></a></td>
+<td><a href="#" onclick="ans<?php echo $rowwae['id'];?>()">
+<?php  
+
+$answare = $rowwae['answ'];
+if($answare == "Team 1"){
+    echo $roww['countryOne'];
+}elseif($answare == "Team 2"){
+    echo $roww['countryTwo'];
+}else{
+echo $answare;
+}
+?>
+ <b> - <?php echo $rowwae['betRate'];?></b></a></td>
 
 <section class="modal-box transform" id="modal-box<?php echo $rowwae['id'];?>">
 <div class="modal-cont">

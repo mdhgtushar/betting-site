@@ -53,7 +53,7 @@ echo "<p class='col-dng'>Something Wrong</p>";
 
 <?php 
 $i = 1;
-$queryy = "SELECT * FROM transiction WHERE  statusId=1";
+$queryy = "SELECT * FROM transiction WHERE  statusId=1 ORDER BY id desc";
 $resulyt = mysqli_query($con, $queryy);
 if($resulyt){
 if(mysqli_num_rows($resulyt) > 0){
@@ -79,7 +79,7 @@ if(mysqli_num_rows($clubResult) > 0){
 <td><?php echo $roww['valueFrom']?></td>
 <td><?php echo $roww['trnNum']?></td>
 <td><?php echo $roww['subTime']?></td>
-<td><a href="#">edit Note</a></td>
+<td><a href="editNote.php?id=<?php echo $roww['id']?>">edit Note</a></td>
 <td><?php
  $statusPo = $roww['statusPo'];
  if($statusPo == 0){

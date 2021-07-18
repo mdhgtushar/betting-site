@@ -11,8 +11,6 @@
 <th>Ammount</th>
 <th>Send to</th>
 <th>Date</th>
-<th>Note</th>
-<th>Action</th>
 </tr>
 </thead>
 <tbody>
@@ -33,8 +31,6 @@ while($roww = mysqli_fetch_array($resulyt)){
 <td><?php echo $roww['ammount']?></td>
 <td>md</td>
 <td><?php echo $roww['subTime']?></td>
-<td><a href="#">edit Note</a></td>
-<td><a href="" class="btn btn-danger">Delete</a></td>
 </tr>
 
 
